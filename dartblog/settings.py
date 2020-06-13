@@ -135,4 +135,3 @@ INTERNAL_IPS = [
 ]
 
 CKEDITOR_UPLOAD_PATH = 'uploads/'
-
