@@ -1,5 +1,5 @@
 from django.db import models
-
+from ckeditor_uploader.fields import RichTextUploadingField
 '''
 Category
 ===========
@@ -28,6 +28,8 @@ class Category(models.Model):
 
     class Meta:
         ordering = ['title']
+        verbose_name = 'Категория'
+        verbose_name_plural = 'Категории'
 
 
 class Tag(models.Model):
@@ -39,13 +41,15 @@ class Tag(models.Model):
 
     class Meta:
         ordering = ['title']
+        verbose_name_plural = 'Теги'
+        verbose_name = 'Тег'
 
 
 class Post(models.Model):
-    title = models.CharField(max_length=255, verbose_name='Категория')
+    title = models.CharField(max_length=255, verbose_name='Название')
     slug = models.SlugField(max_length=255, verbose_name='Url', unique=True)
     author = models.CharField(max_length=100, verbose_name='Автор')
-    content = models.TextField()
+    content = RichTextUploadingField()
     created_at = models.DateTimeField(auto_now=True, verbose_name="Опубликовано")
     photo = models.ImageField(upload_to='photos/%Y/%m/', blank=True)
     views = models.IntegerField(default=0, verbose_name='Количество просмотров')
@@ -57,3 +61,5 @@ class Post(models.Model):
 
     class Meta:
         ordering = ['-created_at']
+        verbose_name = 'Запись'
+        verbose_name_plural = 'Записи'
