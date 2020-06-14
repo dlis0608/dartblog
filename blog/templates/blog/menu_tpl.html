@@ -3,7 +3,7 @@
         <li {% if current_path == '/' %}
             class="active" {% endif %}><a href="{% url 'home' %}">Home</a></li>
         {% for item in categories %}
-            <li {% if current_path == item.get_absolute_url %}
+            <li {% if item.get_absolute_url in current_path  %}
                 class="active" {% endif %}><a href="{{ item.get_absolute_url }}">{{ item.title }}</a></li>
         {% endfor %}
     </ul>

@@ -1,6 +1,5 @@
 from django import template
 from blog.models import Category
-from django.template import Context
 
 register = template.Library()
 
